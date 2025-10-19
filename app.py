@@ -29,24 +29,21 @@ st.markdown("<hr style='border: 2px solid #1E90FF;'>", unsafe_allow_html=True)
 # ===================================
 def set_bg_local(image_file):
     with open(image_file, "rb") as image:
-        encoded_string = base64.b64encode(image.read()).decode()
+        encoded = base64.b64encode(image.read())
     st.markdown(
         f"""
         <style>
         .stApp {{
-            background-image: url("data:image/png;base64,{encoded_string}");
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
+            background-image: url(data:image/jpg;base64,{encoded.decode()});
+            background-size: cover
         }}
         </style>
         """,
         unsafe_allow_html=True
     )
 
-# Set background
-set_bg_local("C:/AI_Study_Assistant_Web/background.jpg")
+# Use relative path
+set_bg_local("background.jpg")
 
 # ===================================
 # INITIALIZE SESSION STATE
